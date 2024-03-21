@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
-from _functions import clamp
-from base_effect import EffectList
+from src._functions import clamp
+from src.base_effect import EffectList
 
 
 class Hero(ABC):

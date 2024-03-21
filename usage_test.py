@@ -1,4 +1,4 @@
-from heroes import Warrior
+from src.heroes import Warrior
 
 warrior_a = Warrior()
 warrior_b = Warrior()

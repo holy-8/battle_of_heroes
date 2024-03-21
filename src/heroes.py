@@ -1,5 +1,5 @@
-import effects
-from base_hero import Hero
+import src.effects as effects
+from src.base_hero import Hero
 
 
 class Warrior(Hero):

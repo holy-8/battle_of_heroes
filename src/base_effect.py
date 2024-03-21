@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-from _enums import EffectType
+from src._enums import EffectType
 
 
 class Effect(ABC):

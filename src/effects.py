@@ -1,5 +1,5 @@
-from _enums import EffectType
-from base_effect import Effect
+from src._enums import EffectType
+from src.base_effect import Effect
 
 
 class Strength(Effect):
