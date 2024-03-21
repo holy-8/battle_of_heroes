@@ -24,6 +24,10 @@ class Effect(ABC):
     def before_apply(self, target):
         ...
 
+    @abstractmethod
+    def got_attacked(self, target, attacker, damage):
+        ...
+
 
 class EffectList:
     def __init__(self, parent):
@@ -51,3 +55,7 @@ class EffectList:
     def update_all(self):
         for effect in self.effects:
             effect.is_applied = False
+
+    def got_attacked(self, target, attacker, damage):
+        for effect in self.effects:
+            effect.got_attacked(target, attacker, damage)

@@ -14,3 +14,22 @@ class Strength(Effect):
     def before_apply(self, target):
         for key in target.cur_damage:
             target.cur_damage[key] = round(target.cur_damage[key] * 2.25)
+
+    def got_attacked(self, target, attacker, damage):
+        ...
+
+
+class ElectricShield(Effect):
+    """
+    Wizards's ability: Electric shield effect (Buff).
+    Attacker receives 15 RAW damage. Shield lasts 2 turns.
+    """
+    # -- Parameters to modify -- #
+    duration: int = 2
+    effect_type: EffectType = EffectType.BUFF
+
+    def before_apply(self, target):
+        ...
+
+    def got_attacked(self, target, attacker, damage):
+        attacker.cur_health -= 15

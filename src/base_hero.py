@@ -70,7 +70,9 @@ class Hero(ABC):
         assert len(targets) in self.damage
         self.before_attack(targets)
         for target in targets:
-            target.cur_health -= self.cur_damage[len(targets)]
+            damage = self.cur_damage[len(targets)]
+            target.cur_health -= damage
+            target.cur_effects.got_attacked(target=target, attacker=self, damage=damage)
         self.has_moved = True
 
     def defend(self):
