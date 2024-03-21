@@ -13,8 +13,8 @@ Heroes
 On player's turn, they must make a move with *each* of their heroes *once*.
 
 Each hero is able to perform three moves:
-    - Attack
-    - Defend
-    - Ability (optional)
+- Attack
+- Defend
+- Ability (optional)
 
 Also, heroes can have a *trait* (for example: dealing a debuff with each attack).
