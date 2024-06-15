@@ -10,15 +10,20 @@ class Effect(ABC):
     duration: int  # Initial amount of moves before this effect gets deleted, can be inf.
     effect_type: EffectType
 
-    def __init__(self):
+    def __init__(self, **kwargs):
         self.name = self.__class__.__name__
         self.is_applied = False
         self.cur_duration = self.duration
+        self.after_init(**kwargs)
 
     def apply(self, target):
         self.before_apply(target)
         self.is_applied = True
         self.cur_duration -= 1
+
+    @abstractmethod
+    def after_init(self, **kwargs):
+        ...
 
     @abstractmethod
     def before_apply(self, target):
@@ -55,6 +60,9 @@ class EffectList:
     def update_all(self):
         for effect in self.effects:
             effect.is_applied = False
+
+    def clear_all(self):
+        self.effects = list()
 
     def got_attacked(self, target, attacker, damage):
         for effect in self.effects:

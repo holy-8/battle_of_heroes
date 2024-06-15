@@ -1,19 +1,20 @@
-from src.heroes import Warrior, Wizard
+from src.heroes import *
 
 team_red = [
     Warrior(),
-    Wizard()
+    Wizard(),
+    Berserk()
 ]
 
 team_blue = [
     Warrior(),
-    Warrior(),
-    Warrior()
+    Healer(),
+    Necromancer()
 ]
 
-team_red[1].ability(targets=[team_red[0]])
+team_red[0].attack(targets=[team_blue[1]])
 
-team_blue[0].attack(targets=[team_red[0]])
+team_blue[2].ability(targets=[team_blue[1]])
 
-print(f'Team red: {team_red}.')
+print(f'Team red: {team_red}')
 print(f'Team blue: {team_blue}')

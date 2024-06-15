@@ -65,6 +65,7 @@ class Hero(ABC):
         self.cur_effects.apply_all()
         if self.cur_ability_reload < 1:
             self.cur_ability_reload += 1 / self.ability_reload
+        self.after_start_turn()
 
     def attack(self, targets: list):
         assert len(targets) in self.damage
@@ -84,6 +85,10 @@ class Hero(ABC):
         self.before_ability(targets)
         self.has_moved = True
         self.cur_ability_reload = 0.0
+
+    @abstractmethod
+    def after_start_turn(self):
+        ...
 
     @abstractmethod
     def before_attack(self, targets: list):
