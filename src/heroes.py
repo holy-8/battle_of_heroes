@@ -198,7 +198,7 @@ class Defender(Hero):
 
     def after_start_turn(self):
         if self.cur_health < round(self.max_health * 0.25):
-            self.damage[1] *= 2
+            self.cur_damage[1] *= 2
 
     def before_attack(self, targets: list):
         ...
@@ -253,3 +253,39 @@ class Necromancer(Hero):
         assert targets[0].cur_health == 0
         targets[0].cur_effects.clear_all()
         targets[0].cur_health = targets[0].max_health
+
+
+class Archer(Hero):
+    """
+    === STATS ===
+
+    HP: 56;
+    Damage: 21;
+    Defense: 10.
+
+    === ABILITY ===
+
+    None.
+
+    === TRAIT ===
+
+    Archer gains 1 extra damage for each lost hp, and vice versa.
+    """
+    # -- Parameters to modify -- #
+    max_health: int = 56
+    damage: dict[int: int] = {1: 21}
+    defense: int = 10
+    ability_reload: int = -1
+    ability_charge: int = -1
+
+    def after_start_turn(self):
+        self.cur_damage[1] += self.max_health - self.cur_health
+
+    def before_attack(self, targets: list):
+        ...
+
+    def before_defend(self):
+        ...
+
+    def before_ability(self, targets: list):
+        assert False
